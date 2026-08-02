@@ -119,3 +119,31 @@ img{
 
 
 }
+
+
+
+html,
+body,
+#root{
+    margin:0;
+    padding:0;
+    min-height:100%;
+}
+
+body{
+    font-family:Poppins,sans-serif;
+}
+
+#root{
+    min-height:100vh;
+}
+
+.app{
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+}
+
+.main-content{
+    flex:1;
+}
