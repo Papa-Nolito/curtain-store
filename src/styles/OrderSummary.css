@@ -1,0 +1,115 @@
+.order-summary{
+
+
+    background:white;
+
+    padding:25px;
+
+    border-radius:15px;
+
+    box-shadow:0 5px 20px rgba(0,0,0,0.1);
+
+
+}
+
+
+
+
+
+
+.order-summary h2{
+
+
+    margin-bottom:20px;
+
+
+}
+
+
+
+
+
+
+.summary-item{
+
+
+    display:flex;
+
+    gap:15px;
+
+    align-items:center;
+
+    margin-bottom:20px;
+
+    border-bottom:1px solid #ddd;
+
+    padding-bottom:15px;
+
+
+}
+
+
+
+
+
+
+.summary-item img{
+
+
+    width:70px;
+
+    height:70px;
+
+    object-fit:cover;
+
+    border-radius:8px;
+
+
+}
+
+
+
+
+
+
+.summary-details h3{
+
+
+    font-size:16px;
+
+    margin-bottom:8px;
+
+
+}
+
+
+
+
+
+
+.summary-details p{
+
+
+    margin:5px 0;
+
+    font-size:14px;
+
+
+}
+
+
+
+
+
+
+.summary-total{
+
+
+    margin-top:20px;
+
+    border-top:2px solid #ddd;
+
+    padding-top:15px;
+
+
+}
