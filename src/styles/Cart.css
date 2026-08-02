@@ -107,3 +107,38 @@ font-size:16px;
 background:#444;
 
 }
+
+
+
+.empty-cart{
+
+
+    text-align:center;
+
+
+    padding:80px 20px;
+
+
+}
+
+
+
+.empty-cart a{
+
+
+    display:inline-block;
+
+
+    margin-top:20px;
+
+
+    padding:12px 20px;
+
+
+    text-decoration:none;
+
+
+    border-radius:8px;
+
+
+}

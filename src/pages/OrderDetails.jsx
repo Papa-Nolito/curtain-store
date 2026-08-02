@@ -7,15 +7,14 @@ import {
 } from "react-router-dom";
 
 
-import "../styles/OrderConfirmation.css";
+import "../styles/OrderDetails.css";
 
 
 
 
 
 
-
-function OrderConfirmation(){
+function OrderDetails(){
 
 
 
@@ -23,9 +22,10 @@ function OrderConfirmation(){
 
     const {
 
-        orderId
+        id
 
     } = useParams();
+
 
 
 
@@ -60,7 +60,7 @@ function OrderConfirmation(){
 
         item =>
 
-        item.id === orderId
+        item.id === id
 
     );
 
@@ -80,8 +80,7 @@ function OrderConfirmation(){
 
 
 
-            <div className="confirmation-page">
-
+            <div className="order-details-page">
 
 
 
@@ -99,12 +98,15 @@ function OrderConfirmation(){
 
 
 
-                <Link to="/">
+                <Link
 
-                    Return Home
+                to="/profile"
+
+                >
+
+                    Back To Profile
 
                 </Link>
-
 
 
 
@@ -116,7 +118,6 @@ function OrderConfirmation(){
 
 
         );
-
 
 
     }
@@ -135,15 +136,14 @@ function OrderConfirmation(){
 
 
 
-        <div className="confirmation-page page-animation">
+        <div className="order-details-page page-animation">
 
 
 
 
 
 
-
-            <div className="confirmation-card">
+            <div className="order-details-card">
 
 
 
@@ -153,7 +153,7 @@ function OrderConfirmation(){
 
                 <h1>
 
-                    Order Confirmed 🎉
+                    Order Details
 
                 </h1>
 
@@ -164,21 +164,9 @@ function OrderConfirmation(){
 
 
 
-                <p>
 
-                    Thank you for shopping with CurtainStore.
+                <div className="order-information">
 
-                </p>
-
-
-
-
-
-
-
-
-
-                <div className="order-details">
 
 
 
@@ -186,9 +174,10 @@ function OrderConfirmation(){
 
                     <h2>
 
-                        Order Details
+                        Order Information
 
                     </h2>
+
 
 
 
@@ -232,11 +221,16 @@ function OrderConfirmation(){
 
                     <p>
 
-                        Total:
+                        Status:
 
-                        Ksh {order.total}
+                        <span className="status">
+
+                            Completed
+
+                        </span>
 
                     </p>
+
 
 
 
@@ -253,8 +247,7 @@ function OrderConfirmation(){
 
 
 
-                <div className="customer-details">
-
+                <div className="customer-information">
 
 
 
@@ -262,10 +255,9 @@ function OrderConfirmation(){
 
                     <h2>
 
-                        Shipping Details
+                        Customer Information
 
                     </h2>
-
 
 
 
@@ -347,7 +339,7 @@ function OrderConfirmation(){
 
 
 
-                <div className="ordered-products">
+                <div className="products-information">
 
 
 
@@ -356,7 +348,7 @@ function OrderConfirmation(){
 
                     <h2>
 
-                        Products
+                        Ordered Products
 
                     </h2>
 
@@ -367,18 +359,21 @@ function OrderConfirmation(){
 
 
 
+
                     {
 
-                    order.products.map(item=>(
+                    order.products.map(product=>(
+
+
 
 
 
 
                         <div
 
-                        className="confirmed-item"
+                        className="order-product"
 
-                        key={item.id}
+                        key={product.id}
 
                         >
 
@@ -387,14 +382,14 @@ function OrderConfirmation(){
 
 
 
+
                             <img
 
-                            src={item.image}
+                            src={product.image}
 
-                            alt={item.name}
+                            alt={product.name}
 
                             />
-
 
 
 
@@ -408,9 +403,11 @@ function OrderConfirmation(){
 
 
 
+
+
                                 <h3>
 
-                                    {item.name}
+                                    {product.name}
 
                                 </h3>
 
@@ -425,7 +422,7 @@ function OrderConfirmation(){
 
                                     Quantity:
 
-                                    {item.quantity}
+                                    {product.quantity}
 
                                 </p>
 
@@ -438,9 +435,26 @@ function OrderConfirmation(){
 
                                 <p>
 
-                                    Ksh {item.price}
+                                    Price:
+
+                                    Ksh {product.price}
 
                                 </p>
+
+
+
+
+
+
+
+                                <p>
+
+                                    Subtotal:
+
+                                    Ksh {product.price * product.quantity}
+
+                                </p>
+
 
 
 
@@ -456,6 +470,7 @@ function OrderConfirmation(){
 
 
                         </div>
+
 
 
 
@@ -482,18 +497,46 @@ function OrderConfirmation(){
 
 
 
+                <div className="order-total">
+
+
+
+
+
+                    <h2>
+
+                        Total Paid:
+
+                        Ksh {order.total}
+
+                    </h2>
+
+
+
+
+
+
+
+                </div>
+
+
+
+
+
+
+
+
                 <Link
 
-                to="/products"
+                to="/profile"
 
-                className="continue-shopping"
+                className="back-profile"
 
                 >
 
-                    Continue Shopping
+                    Back To Profile
 
                 </Link>
-
 
 
 
@@ -521,4 +564,5 @@ function OrderConfirmation(){
 
 
 
-export default OrderConfirmation;
+
+export default OrderDetails;

@@ -16,11 +16,15 @@ const ProductContext = createContext();
 
 
 
+
 export function ProductProvider({children}){
 
 
 
-    // Products
+
+
+    // PRODUCTS
+
 
     const [products,setProducts] = useState(
         productsData
@@ -28,25 +32,50 @@ export function ProductProvider({children}){
 
 
 
-    // Search
+
+
+
+    // LOADING STATE
+
+
+    const [loading,setLoading] = useState(false);
+
+
+
+
+
+
+
+    // SEARCH
+
 
     const [search,setSearch] = useState("");
 
 
 
 
-    // Cart
+
+
+
+
+    // CART
+
 
     const [cartItems,setCartItems] = useState(()=>{
 
 
         const savedCart =
+
         localStorage.getItem("cart");
 
 
+
         return savedCart
+
         ? JSON.parse(savedCart)
+
         : [];
+
 
 
     });
@@ -55,18 +84,28 @@ export function ProductProvider({children}){
 
 
 
-    // Wishlist
+
+
+
+
+    // WISHLIST
+
 
     const [wishlist,setWishlist] = useState(()=>{
 
 
         const savedWishlist =
+
         localStorage.getItem("wishlist");
 
 
+
         return savedWishlist
+
         ? JSON.parse(savedWishlist)
+
         : [];
+
 
 
     });
@@ -77,7 +116,9 @@ export function ProductProvider({children}){
 
 
 
-    // Save cart whenever it changes
+
+
+    // SAVE CART
 
 
     useEffect(()=>{
@@ -101,7 +142,8 @@ export function ProductProvider({children}){
 
 
 
-    // Save wishlist whenever it changes
+
+    // SAVE WISHLIST
 
 
     useEffect(()=>{
@@ -126,75 +168,101 @@ export function ProductProvider({children}){
 
 
 
-    // Add product to cart
+
+
+
+
+
+    // ADD TO CART
 
 
     const addToCart = (product)=>{
 
 
-        const existingProduct =
-
-        cartItems.find(
-
-            item=>item.id === product.id
-
-        );
+        setCartItems(previous=>{
 
 
+            const existingProduct =
 
+            previous.find(
 
-        if(existingProduct){
-
-
-
-            setCartItems(
-
-                cartItems.map(item=>
-
-                    item.id === product.id
-
-                    ?
-
-                    {
-
-                        ...item,
-
-                        quantity:item.quantity + 1
-
-                    }
-
-                    :
-
-                    item
-
-                )
+                item=>item.id === product.id
 
             );
 
 
 
-        }
 
 
-        else{
 
 
-            setCartItems([
+            if(existingProduct){
 
-                ...cartItems,
+
+
+                return previous.map(item=>
+
+
+
+                    item.id === product.id
+
+                    ?
+
+
+                    {
+
+                        ...item,
+
+                        quantity:
+
+                        item.quantity + 1
+
+                    }
+
+
+                    :
+
+
+                    item
+
+
+
+                );
+
+
+
+            }
+
+
+
+
+
+
+
+            return [
+
+
+                ...previous,
+
 
                 {
 
+
                     ...product,
+
 
                     quantity:1
 
+
                 }
 
-            ]);
 
 
-        }
+            ];
+
+
+
+        });
 
 
 
@@ -208,19 +276,26 @@ export function ProductProvider({children}){
 
 
 
-    // Remove from cart
+
+
+
+    // REMOVE FROM CART
 
 
     const removeFromCart = (id)=>{
 
 
-        setCartItems(
+        setCartItems(previous=>
 
-            cartItems.filter(
+
+
+            previous.filter(
 
                 item=>item.id !== id
 
             )
+
+
 
         );
 
@@ -234,36 +309,50 @@ export function ProductProvider({children}){
 
 
 
-    // Increase quantity
+
+
+
+
+
+    // INCREASE QUANTITY
 
 
     const increaseQuantity = (id)=>{
 
 
-        setCartItems(
+        setCartItems(previous=>
 
-            cartItems.map(item=>
+
+            previous.map(item=>
 
 
                 item.id === id
 
+
                 ?
+
 
                 {
 
+
                     ...item,
 
+
                     quantity:item.quantity + 1
+
 
                 }
 
 
                 :
 
+
                 item
 
 
+
             )
+
 
         );
 
@@ -278,24 +367,30 @@ export function ProductProvider({children}){
 
 
 
-    // Decrease quantity
+
+
+
+
+    // DECREASE QUANTITY
 
 
     const decreaseQuantity = (id)=>{
 
 
-        setCartItems(
+        setCartItems(previous=>
 
-            cartItems.map(item=>{
+
+            previous.map(item=>{
 
 
                 if(item.id === id){
 
 
-                    return {
+                    return{
 
 
                         ...item,
+
 
                         quantity:
 
@@ -309,17 +404,20 @@ export function ProductProvider({children}){
 
                         1
 
+
+
                     };
 
 
                 }
 
 
+
                 return item;
 
 
-            })
 
+            })
 
         );
 
@@ -334,34 +432,81 @@ export function ProductProvider({children}){
 
 
 
-    // Add to wishlist
+
+
+
+
+    // CLEAR CART AFTER PAYMENT
+
+
+    const clearCart = ()=>{
+
+
+        setCartItems([]);
+
+
+    };
+
+
+
+
+
+
+
+
+
+
+
+
+
+    // ADD WISHLIST
 
 
     const addToWishlist = (product)=>{
 
 
-        const exists =
-
-        wishlist.some(
-
-            item=>item.id === product.id
-
-        );
+        setWishlist(previous=>{
 
 
+            const exists =
 
-        if(!exists){
+            previous.some(
+
+                item=>item.id === product.id
+
+            );
 
 
-            setWishlist([
 
-                ...wishlist,
+
+
+            if(exists){
+
+
+                return previous;
+
+
+            }
+
+
+
+
+
+            return [
+
+
+                ...previous,
+
 
                 product
 
-            ]);
 
-        }
+            ];
+
+
+
+        });
+
 
 
     };
@@ -373,19 +518,25 @@ export function ProductProvider({children}){
 
 
 
-    // Remove from wishlist
+
+
+
+
+    // REMOVE WISHLIST
 
 
     const removeFromWishlist = (id)=>{
 
 
-        setWishlist(
+        setWishlist(previous=>
 
-            wishlist.filter(
+
+            previous.filter(
 
                 item=>item.id !== id
 
             )
+
 
         );
 
@@ -400,12 +551,16 @@ export function ProductProvider({children}){
 
 
 
-    // Search filtering
+
+
+
+    // FILTER PRODUCTS
 
 
     const filteredProducts =
 
     products.filter(product=>
+
 
         product.name
 
@@ -417,6 +572,7 @@ export function ProductProvider({children}){
 
         )
 
+
     );
 
 
@@ -427,20 +583,41 @@ export function ProductProvider({children}){
 
 
 
-    return (
+
+
+
+
+    return(
+
+
 
         <ProductContext.Provider
 
+
         value={{
+
+
 
             products,
 
+            setProducts,
+
+
+
             filteredProducts,
+
+
+
+            loading,
+
+            setLoading,
+
 
 
             search,
 
             setSearch,
+
 
 
             cartItems,
@@ -455,6 +632,8 @@ export function ProductProvider({children}){
 
             decreaseQuantity,
 
+            clearCart,
+
 
 
             wishlist,
@@ -464,16 +643,24 @@ export function ProductProvider({children}){
             removeFromWishlist
 
 
+
         }}
 
+
         >
+
+
 
             {children}
 
 
+
         </ProductContext.Provider>
 
+
+
     );
+
 
 
 }
@@ -489,7 +676,9 @@ export function ProductProvider({children}){
 export function useProducts(){
 
 
+
     return useContext(ProductContext);
+
 
 
 }

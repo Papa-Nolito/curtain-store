@@ -1,14 +1,18 @@
 import {
-    useProducts
-} from "../context/ProductContext";
-
-
-import {
     Link
 } from "react-router-dom";
 
 
+import {
+    useProducts
+} from "../context/ProductContext";
+
+
 import "../styles/Cart.css";
+
+
+
+
 
 
 
@@ -16,15 +20,23 @@ function Cart(){
 
 
 
+
+
     const {
+
 
         cartItems,
 
+
         removeFromCart,
+
 
         increaseQuantity,
 
+
         decreaseQuantity
+
+
 
     } = useProducts();
 
@@ -34,19 +46,24 @@ function Cart(){
 
 
 
-    const total = cartItems.reduce(
+
+
+    const total =
+
+    cartItems.reduce(
+
 
         (sum,item)=>
 
-        sum + (
 
-            item.price *
+        sum +
 
-            item.quantity
+        item.price *
 
-        ),
+        item.quantity,
 
         0
+
 
     );
 
@@ -56,18 +73,26 @@ function Cart(){
 
 
 
-    return (
 
 
-        <div className="cart-page">
-
-
+    return(
 
 
 
-            <h2>
+        <div className="cart-page page-animation">
+
+
+
+
+
+
+            <h1>
+
                 Shopping Cart
-            </h2>
+
+            </h1>
+
+
 
 
 
@@ -81,16 +106,71 @@ function Cart(){
 
 
 
+
+
             (
 
-                <p>
 
-                Your cart is empty
 
-                </p>
+
+                <div className="empty-cart">
+
+
+
+
+
+
+                    <h2>
+
+                        Your Cart Is Empty
+
+                    </h2>
+
+
+
+
+
+
+                    <p>
+
+                        Add some beautiful curtains
+                        to continue shopping.
+
+                    </p>
+
+
+
+
+
+
+
+
+                    <Link
+
+                    to="/products"
+
+                    >
+
+                        Browse Products
+
+                    </Link>
+
+
+
+
+
+
+                </div>
+
+
+
 
 
             )
+
+
+
+
 
 
 
@@ -98,39 +178,39 @@ function Cart(){
 
 
 
+
+
             (
+
 
 
                 <>
 
 
 
-                {
-
-                cartItems.map(item=>(
 
 
-
-                    <div
-
-                    className="cart-item"
-
-                    key={item.id}
-
-                    >
+                <div className="cart-items">
 
 
 
 
 
 
-                        <img
+                    {
 
-                        src={item.image}
+                    cartItems.map(item=>(
 
-                        alt={item.name}
 
-                        />
+
+
+                        <div
+
+                        className="cart-item"
+
+                        key={item.id}
+
+                        >
 
 
 
@@ -138,25 +218,13 @@ function Cart(){
 
 
 
-                        <div>
+                            <img
 
+                            src={item.image}
 
+                            alt={item.name}
 
-                            <h3>
-
-                            {item.name}
-
-                            </h3>
-
-
-
-
-
-                            <p>
-
-                            Price: ${item.price}
-
-                            </p>
+                            />
 
 
 
@@ -164,7 +232,96 @@ function Cart(){
 
 
 
-                            <div className="quantity">
+
+                            <div className="cart-details">
+
+
+
+
+
+
+                                <h3>
+
+                                    {item.name}
+
+                                </h3>
+
+
+
+
+
+
+
+                                <p>
+
+                                    Price:
+
+                                    Ksh {item.price}
+
+                                </p>
+
+
+
+
+
+
+
+
+                                <div className="quantity-controls">
+
+
+
+
+
+                                    <button
+
+                                    onClick={()=>decreaseQuantity(item.id)}
+
+                                    >
+
+                                        -
+
+                                    </button>
+
+
+
+
+
+
+
+
+                                    <span>
+
+                                        {item.quantity}
+
+                                    </span>
+
+
+
+
+
+
+
+
+                                    <button
+
+                                    onClick={()=>increaseQuantity(item.id)}
+
+                                    >
+
+                                        +
+
+                                    </button>
+
+
+
+
+
+
+                                </div>
+
+
+
 
 
 
@@ -172,45 +329,17 @@ function Cart(){
 
                                 <button
 
-                                onClick={()=>
+                                className="remove-btn"
 
-                                decreaseQuantity(item.id)
-
-                                }
+                                onClick={()=>removeFromCart(item.id)}
 
                                 >
 
-                                -
+                                    Remove
 
                                 </button>
 
 
-
-
-
-                                <span>
-
-                                {item.quantity}
-
-                                </span>
-
-
-
-
-
-                                <button
-
-                                onClick={()=>
-
-                                increaseQuantity(item.id)
-
-                                }
-
-                                >
-
-                                +
-
-                                </button>
 
 
 
@@ -224,55 +353,24 @@ function Cart(){
 
 
 
-
-                            <button
-
-                            className="remove"
-
-                            onClick={()=>
-
-                            removeFromCart(item.id)
-
-                            }
-
-                            >
-
-                            Remove
-
-                            </button>
-
-
-
-
-
-
                         </div>
 
 
 
 
 
-
-
-                    </div>
+                    ))
 
 
 
-                ))
-
-                }
+                    }
 
 
 
 
 
 
-
-                <h3>
-
-                Total: ${total}
-
-                </h3>
+                </div>
 
 
 
@@ -280,25 +378,50 @@ function Cart(){
 
 
 
-                <Link
-
-                to="/checkout"
-
-                >
 
 
-                    <button
+                <div className="cart-summary">
+
+
+
+
+
+
+                    <h2>
+
+                        Total:
+
+                        Ksh {total}
+
+                    </h2>
+
+
+
+
+
+
+
+                    <Link
+
+                    to="/checkout"
 
                     className="checkout-btn"
 
                     >
 
-                    Proceed To Checkout
+                        Proceed To Checkout
 
-                    </button>
+                    </Link>
 
 
-                </Link>
+
+
+
+
+
+                </div>
+
+
 
 
 
@@ -307,10 +430,16 @@ function Cart(){
                 </>
 
 
+
             )
 
-            }
 
+
+
+
+
+
+            }
 
 
 
@@ -320,10 +449,13 @@ function Cart(){
         </div>
 
 
+
     );
 
 
 }
+
+
 
 
 

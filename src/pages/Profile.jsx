@@ -1,9 +1,21 @@
 import {
+
     useAuth
+
 } from "../context/AuthContext";
 
 
+import {
+
+    Link
+
+} from "react-router-dom";
+
+
 import "../styles/Profile.css";
+
+
+
 
 
 
@@ -11,9 +23,16 @@ function Profile(){
 
 
 
+
+
     const {
+
         user
+
     } = useAuth();
+
+
+
 
 
 
@@ -33,19 +52,28 @@ function Profile(){
 
 
 
-    return (
+
+    return(
 
 
 
-        <div className="profile-container">
+
+        <div className="profile-container page-animation">
+
+
 
 
 
 
 
             <h1>
+
                 My Profile
+
             </h1>
+
+
+
 
 
 
@@ -58,9 +86,10 @@ function Profile(){
 
 
 
+
                 <h2>
 
-                {user.name}
+                    {user?.name}
 
                 </h2>
 
@@ -68,11 +97,13 @@ function Profile(){
 
 
 
+
+
                 <p>
 
-                Email:
+                    Email:
 
-                {user.email}
+                    {user?.email}
 
                 </p>
 
@@ -80,13 +111,17 @@ function Profile(){
 
 
 
+
+
+
                 <p>
 
-                Account Status:
+                    Account Status:
 
-                Active
+                    Active
 
                 </p>
+
 
 
 
@@ -102,15 +137,19 @@ function Profile(){
 
 
 
-            <div className="orders-section">
+            <section className="orders-section">
 
 
 
 
 
                 <h2>
+
                     My Orders
+
                 </h2>
+
+
 
 
 
@@ -123,14 +162,26 @@ function Profile(){
 
 
 
+
+
+
                 (
 
+
+
                     <p>
+
                         You have no orders yet.
+
                     </p>
 
 
+
                 )
+
+
+
+
 
 
 
@@ -138,48 +189,49 @@ function Profile(){
 
 
 
-                (
-
-
-
-                    orders.map(order=>(
 
 
 
 
-                        <div
-
-                        className="order-card"
-
-                        key={order.id}
-
-                        >
+                orders.map(order=>(
 
 
 
 
+                    <div
+
+                    className="order-card"
+
+                    key={order.id}
+
+                    >
 
 
-                            <h3>
+
+
+
+
+                        <h3>
 
                             Order ID:
 
                             {order.id}
 
-                            </h3>
+                        </h3>
 
 
 
 
 
 
-                            <p>
+
+                        <p>
 
                             Date:
 
                             {order.date}
 
-                            </p>
+                        </p>
 
 
 
@@ -187,13 +239,14 @@ function Profile(){
 
 
 
-                            <p>
+
+                        <p>
 
                             Total:
 
                             Ksh {order.total}
 
-                            </p>
+                        </p>
 
 
 
@@ -202,93 +255,36 @@ function Profile(){
 
 
 
-                            <div className="order-products">
+                        <Link
 
+                        to={`/order-details/${order.id}`}
 
+                        className="view-order"
 
+                        >
 
+                            View Order
 
-                                {
+                        </Link>
 
-                                order.products.map(product=>(
 
 
 
-                                    <div
 
-                                    className="profile-product"
 
-                                    key={product.id}
 
-                                    >
 
+                    </div>
 
 
 
 
-                                        <img
 
-                                        src={product.image}
+                ))
 
-                                        alt={product.name}
 
-                                        />
 
 
-
-
-
-                                        <div>
-
-
-                                            <p>
-
-                                            {product.name}
-
-                                            </p>
-
-
-                                            <p>
-
-                                            Quantity:
-
-                                            {product.quantity}
-
-                                            </p>
-
-
-                                        </div>
-
-
-
-
-
-                                    </div>
-
-
-
-                                ))
-
-                                }
-
-
-
-                            </div>
-
-
-
-
-
-
-                        </div>
-
-
-
-                    ))
-
-
-
-                )
 
                 }
 
@@ -296,7 +292,12 @@ function Profile(){
 
 
 
-            </div>
+
+
+
+            </section>
+
+
 
 
 
@@ -311,6 +312,8 @@ function Profile(){
 
 
 }
+
+
 
 
 

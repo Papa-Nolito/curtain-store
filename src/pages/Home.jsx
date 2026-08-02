@@ -1,47 +1,374 @@
-import { useState } from "react";
+import {
+    Link
+} from "react-router-dom";
 
-import Navbar from "../components/Navbar";
-import Hero from "../components/Hero";
-import SearchFilter from "../components/SearchFilter";
-import FeaturedProducts from "../components/FeaturedProducts";
 
-function Home({
-  cartItems,
-  wishlistItems,
-  setWishlistItems,
-  setCartItems,
-  openCart,
-}) {
-  const [search, setSearch] = useState("");
+import ProductCard from "../components/ProductCard";
 
-  const [category, setCategory] = useState("All");
 
-  return (
-    <>
-      <Navbar
-        cartItems={cartItems}
-        wishlistItems={wishlistItems}
-        openCart={openCart}
-      />
+import products from "../data/products";
 
-      <Hero />
 
-      <SearchFilter
-        search={search}
-        setSearch={setSearch}
-        category={category}
-        setCategory={setCategory}
-      />
+import "../styles/Home.css";
 
-      <FeaturedProducts
-        search={search}
-        category={category}
-        wishlistItems={wishlistItems}
-        setWishlistItems={setWishlistItems}
-        setCartItems={setCartItems}
-      />
-    </>
-  );
+
+
+
+
+function Home(){
+
+
+
+    const featuredProducts = products.slice(0,6);
+
+
+
+
+    return(
+
+
+        <div className="home-page">
+
+
+
+
+
+
+            {/* HERO SECTION */}
+
+
+
+            <section className="hero-section">
+
+
+                <div className="hero-overlay">
+
+
+
+                    <div className="hero-content">
+
+
+
+                        <h1>
+
+                            Transform Your Home With Elegant Curtains
+
+                        </h1>
+
+
+
+
+
+                        <p>
+
+                            Discover modern curtain designs that bring
+                            comfort, privacy and beauty to your living spaces.
+
+                        </p>
+
+
+
+
+
+                        <Link
+
+                        to="/products"
+
+                        className="shop-btn"
+
+                        >
+
+                            Shop Now
+
+                        </Link>
+
+
+
+                    </div>
+
+
+
+                </div>
+
+
+
+            </section>
+
+
+
+
+
+
+
+
+
+            {/* FEATURED PRODUCTS */}
+
+
+
+            <section className="featured-section">
+
+
+                <h2>
+
+                    Featured Products
+
+                </h2>
+
+
+
+
+
+                <div className="products-grid">
+
+
+
+                    {
+
+                    featuredProducts.map(product=>(
+
+
+                        <ProductCard
+
+                        key={product.id}
+
+                        product={product}
+
+                        />
+
+
+                    ))
+
+
+                    }
+
+
+
+                </div>
+
+
+
+            </section>
+
+
+
+
+
+
+
+
+
+            {/* WHY CHOOSE US */}
+
+
+
+            <section className="features-section">
+
+
+                <h2>
+
+                    Why Choose CurtainStore?
+
+                </h2>
+
+
+
+
+
+
+
+                <div className="features-container">
+
+
+
+
+
+                    <div className="feature-card">
+
+
+                        <div className="feature-icon">
+
+                            ✨
+
+                        </div>
+
+
+
+                        <h3>
+
+                            Premium Quality
+
+                        </h3>
+
+
+
+                        <p>
+
+                            High quality curtains designed
+                            for durability and long-lasting beauty.
+
+                        </p>
+
+
+
+                    </div>
+
+
+
+
+
+
+
+
+
+                    <div className="feature-card">
+
+
+                        <div className="feature-icon">
+
+                            🏠
+
+                        </div>
+
+
+
+                        <h3>
+
+                            Modern Designs
+
+                        </h3>
+
+
+
+                        <p>
+
+                            Stylish curtain designs suitable
+                            for every home interior.
+
+                        </p>
+
+
+
+                    </div>
+
+
+
+
+
+
+
+
+
+                    <div className="feature-card">
+
+
+                        <div className="feature-icon">
+
+                            💰
+
+                        </div>
+
+
+
+                        <h3>
+
+                            Affordable Prices
+
+                        </h3>
+
+
+
+                        <p>
+
+                            Beautiful curtains at reasonable
+                            prices without compromising quality.
+
+                        </p>
+
+
+
+                    </div>
+
+
+
+
+
+                </div>
+
+
+
+
+
+            </section>
+
+
+
+
+
+
+
+
+            {/* CALL TO ACTION */}
+
+
+
+            <section className="cta-section">
+
+
+
+                <h2>
+
+                    Give Your Home A New Look
+
+                </h2>
+
+
+
+
+
+                <p>
+
+                    Explore our collection and find curtains
+                    that match your style.
+
+                </p>
+
+
+
+
+
+                <Link
+
+                to="/products"
+
+                className="cta-btn"
+
+                >
+
+                    View Collection
+
+                </Link>
+
+
+
+            </section>
+
+
+
+
+
+
+
+        </div>
+
+
+
+    );
+
+
 }
+
+
+
 
 export default Home;

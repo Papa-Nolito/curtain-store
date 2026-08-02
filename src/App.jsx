@@ -7,6 +7,8 @@ import {
 
 import Navbar from "./components/Navbar";
 
+
+
 import ProtectedRoute from "./components/ProtectedRoute";
 
 
@@ -29,11 +31,14 @@ import Profile from "./pages/Profile";
 
 import Checkout from "./pages/Checkout";
 
+import Payment from "./pages/Payment";
+
 import OrderConfirmation from "./pages/OrderConfirmation";
 
+import OrderDetails from "./pages/OrderDetails";
 
+import NotFound from "./pages/NotFound";
 
-import "./index.css";
 
 
 
@@ -42,7 +47,9 @@ import "./index.css";
 function App(){
 
 
-    return (
+
+    return(
+
 
 
         <>
@@ -52,13 +59,22 @@ function App(){
 
 
 
+
+
+
+
             <Routes>
 
 
 
 
 
-                {/* Public Routes */}
+
+
+                {/* PUBLIC ROUTES */}
+
+
+
 
 
 
@@ -69,6 +85,9 @@ function App(){
                 element={<Home />}
 
                 />
+
+
+
 
 
 
@@ -86,6 +105,9 @@ function App(){
 
 
 
+
+
+
                 <Route
 
                 path="/products/:id"
@@ -98,6 +120,9 @@ function App(){
 
 
 
+
+
+
                 <Route
 
                 path="/cart"
@@ -105,6 +130,8 @@ function App(){
                 element={<Cart />}
 
                 />
+
+
 
 
 
@@ -124,6 +151,8 @@ function App(){
 
 
 
+
+
                 <Route
 
                 path="/register"
@@ -131,6 +160,8 @@ function App(){
                 element={<Register />}
 
                 />
+
+
 
 
 
@@ -151,7 +182,17 @@ function App(){
 
 
 
-                {/* Protected Routes */}
+
+
+
+
+
+                {/* PROTECTED ROUTES */}
+
+
+
+
+
 
 
 
@@ -173,7 +214,9 @@ function App(){
 
                 }
 
+
                 />
+
 
 
 
@@ -200,6 +243,7 @@ function App(){
 
                 }
 
+
                 />
 
 
@@ -210,7 +254,61 @@ function App(){
 
 
 
-                {/* Order Confirmation */}
+                <Route
+
+                path="/payment"
+
+                element={
+
+
+                    <ProtectedRoute>
+
+
+                        <Payment />
+
+
+                    </ProtectedRoute>
+
+
+                }
+
+
+                />
+
+
+
+
+
+
+
+
+
+                <Route
+
+                path="/order-details/:id"
+
+                element={
+
+
+                    <ProtectedRoute>
+
+
+                        <OrderDetails />
+
+
+                    </ProtectedRoute>
+
+
+                }
+
+
+                />
+
+
+
+
+
+
 
 
 
@@ -234,21 +332,14 @@ function App(){
 
 
 
+
+
+
                 <Route
 
                 path="*"
 
-                element={
-
-
-                    <h1>
-
-                        404 - Page Not Found
-
-                    </h1>
-
-
-                }
+                element={<NotFound />}
 
                 />
 
@@ -256,7 +347,12 @@ function App(){
 
 
 
+
+
             </Routes>
+
+
+
 
 
 
@@ -267,6 +363,8 @@ function App(){
 
 
 }
+
+
 
 
 
