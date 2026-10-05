@@ -1,0 +1,321 @@
+.profile-container{
+
+
+    min-height:80vh;
+
+    padding:40px;
+
+
+}
+
+
+
+.profile-container h1{
+
+
+    text-align:center;
+
+    margin-bottom:30px;
+
+
+}
+
+
+
+
+
+.profile-card{
+
+
+    background:white;
+
+    padding:30px;
+
+    border-radius:15px;
+
+    max-width:400px;
+
+    margin:0 auto 40px auto;
+
+    text-align:center;
+
+    box-shadow:0 5px 20px rgba(0,0,0,0.1);
+
+
+}
+
+
+
+
+
+
+.orders-section{
+
+
+    max-width:900px;
+
+    margin:auto;
+
+
+}
+
+
+
+
+
+.orders-section h2{
+
+
+    margin-bottom:20px;
+
+
+}
+
+
+
+
+
+
+.order-card{
+
+
+    background:white;
+
+    padding:25px;
+
+    margin-bottom:25px;
+
+    border-radius:15px;
+
+    box-shadow:0 5px 20px rgba(0,0,0,0.1);
+
+
+}
+
+
+
+
+
+
+.order-products{
+
+
+    margin-top:20px;
+
+
+}
+
+
+
+
+
+
+.profile-product{
+
+
+    display:flex;
+
+    align-items:center;
+
+    gap:15px;
+
+    margin-bottom:15px;
+
+
+}
+
+
+
+
+
+
+.profile-product img{
+
+
+    width:70px;
+
+    height:70px;
+
+    object-fit:cover;
+
+    border-radius:10px;
+
+
+}
+
+
+
+
+
+
+.profile-product p{
+
+
+    margin:5px 0;
+
+
+}
+
+
+
+
+
+
+
+@media(max-width:768px){
+
+
+    .profile-container{
+
+
+        padding:20px;
+
+
+    }
+
+
+}
+
+
+
+.orders-header{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-bottom:20px;
+
+}
+
+
+
+.orders-header span{
+
+
+    font-weight:bold;
+
+
+}
+
+
+
+.empty-orders{
+
+
+    background:white;
+
+    padding:20px;
+
+    border-radius:10px;
+
+    text-align:center;
+
+
+}
+
+
+
+.order-card{
+
+
+    background:white;
+
+    padding:25px;
+
+    margin-bottom:25px;
+
+    border-radius:12px;
+
+    box-shadow:
+    0 4px 15px rgba(0,0,0,0.1);
+
+
+}
+
+
+
+.order-products{
+
+
+    margin-top:20px;
+
+
+}
+
+
+
+.profile-product{
+
+
+    display:flex;
+
+    gap:20px;
+
+    align-items:center;
+
+    margin-bottom:15px;
+
+}
+
+
+
+.profile-product img{
+
+
+    width:80px;
+
+    height:80px;
+
+    object-fit:cover;
+
+    border-radius:8px;
+
+
+}
+
+
+
+.wishlist-section{
+
+
+    margin-top:40px;
+
+
+}
+
+
+
+
+
+.wishlist-section h2{
+
+
+    margin-bottom:20px;
+
+
+}
+
+
+
+.view-order-btn{
+
+
+    display:inline-block;
+
+
+    margin-top:15px;
+
+
+    padding:10px 15px;
+
+
+    border-radius:8px;
+
+
+    text-decoration:none;
+
+
+}
