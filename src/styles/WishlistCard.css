@@ -1,0 +1,113 @@
+.wishlist-card{
+
+
+    display:flex;
+
+
+    gap:20px;
+
+
+    background:white;
+
+
+    padding:20px;
+
+
+    border-radius:12px;
+
+
+    margin-bottom:20px;
+
+
+    box-shadow:
+
+    0 5px 15px rgba(0,0,0,0.1);
+
+
+}
+
+
+
+
+
+.wishlist-card img{
+
+
+    width:120px;
+
+
+    height:120px;
+
+
+    object-fit:cover;
+
+
+    border-radius:10px;
+
+
+}
+
+
+
+
+
+.wishlist-details{
+
+
+    flex:1;
+
+
+}
+
+
+
+
+
+
+
+.wishlist-actions{
+
+
+    display:flex;
+
+
+    gap:10px;
+
+
+    margin-top:15px;
+
+
+}
+
+
+
+
+
+.wishlist-actions button{
+
+
+    padding:10px 15px;
+
+
+    border:none;
+
+
+    cursor:pointer;
+
+
+    border-radius:8px;
+
+
+}
+
+
+
+
+
+.delete-btn{
+
+
+    background:#ffdddd;
+
+
+}

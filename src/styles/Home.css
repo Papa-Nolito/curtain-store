@@ -1,0 +1,631 @@
+.home-page{
+
+    width:100%;
+
+    font-family:
+
+    "Poppins",
+    sans-serif;
+
+}
+
+
+
+
+
+/* HERO SECTION */
+
+
+.hero-section{
+
+
+    height:85vh;
+
+
+    background-image:
+
+    url("/curtain-background.jpg");
+
+
+    background-size:cover;
+
+
+    background-position:center;
+
+
+    background-repeat:no-repeat;
+
+
+}
+
+
+
+
+
+
+.hero-overlay{
+
+
+    width:100%;
+
+
+    height:100%;
+
+
+    background:
+
+    rgba(0,0,0,0.45);
+
+
+    display:flex;
+
+
+    align-items:center;
+
+
+    justify-content:center;
+
+
+}
+
+
+
+
+
+
+
+.hero-content{
+
+
+    text-align:center;
+
+
+    color:white;
+
+
+    max-width:850px;
+
+
+    padding:30px;
+
+
+    animation:
+
+    fadeIn 1s ease;
+
+
+}
+
+
+
+
+
+
+
+.hero-content h1{
+
+
+    font-size:55px;
+
+
+    font-weight:700;
+
+
+    line-height:1.2;
+
+
+    margin-bottom:25px;
+
+
+}
+
+
+
+
+
+
+
+.hero-content p{
+
+
+    font-size:20px;
+
+
+    line-height:1.7;
+
+
+    margin-bottom:35px;
+
+
+}
+
+
+
+
+
+
+
+.shop-btn{
+
+
+    display:inline-block;
+
+
+    background:#c49b63;
+
+
+    color:white;
+
+
+    padding:15px 40px;
+
+
+    border-radius:35px;
+
+
+    text-decoration:none;
+
+
+    font-size:18px;
+
+
+    transition:0.3s;
+
+
+}
+
+
+
+
+
+
+
+.shop-btn:hover{
+
+
+    background:#a67c45;
+
+
+    transform:translateY(-5px);
+
+
+}
+
+
+
+
+
+
+
+
+
+
+/* FEATURED PRODUCTS */
+
+
+.featured-section{
+
+
+    padding:70px 30px;
+
+
+    background:white;
+
+
+}
+
+
+
+
+
+
+
+.featured-section h2{
+
+
+    text-align:center;
+
+
+    font-size:35px;
+
+
+    color:#4b3621;
+
+
+    margin-bottom:40px;
+
+
+}
+
+
+
+
+
+
+
+.products-grid{
+
+
+    display:grid;
+
+
+    grid-template-columns:
+
+
+    repeat(auto-fit,minmax(250px,1fr));
+
+
+    gap:30px;
+
+
+}
+
+
+
+
+
+
+
+
+
+/* FEATURES */
+
+
+.features-section{
+
+
+    background:#faf7f2;
+
+
+    padding:80px 30px;
+
+
+    text-align:center;
+
+
+}
+
+
+
+
+
+
+
+.features-section h2{
+
+
+    font-size:35px;
+
+
+    color:#4b3621;
+
+
+    margin-bottom:45px;
+
+
+}
+
+
+
+
+
+
+
+.features-container{
+
+
+    display:grid;
+
+
+    grid-template-columns:
+
+
+    repeat(auto-fit,minmax(260px,1fr));
+
+
+    gap:30px;
+
+
+}
+
+
+
+
+
+
+
+.feature-card{
+
+
+    background:white;
+
+
+    padding:35px;
+
+
+    border-radius:18px;
+
+
+    box-shadow:
+
+
+    0 10px 30px
+
+    rgba(0,0,0,0.1);
+
+
+    transition:0.3s;
+
+
+}
+
+
+
+
+
+
+
+.feature-card:hover{
+
+
+    transform:translateY(-10px);
+
+
+}
+
+
+
+
+
+
+
+.feature-icon{
+
+
+    font-size:40px;
+
+
+    margin-bottom:20px;
+
+
+}
+
+
+
+
+
+
+
+.feature-card h3{
+
+
+    color:#c49b63;
+
+
+    font-size:23px;
+
+
+}
+
+
+
+
+
+
+
+.feature-card p{
+
+
+    color:#555;
+
+
+    line-height:1.7;
+
+
+}
+
+
+
+
+
+
+
+
+
+/* CTA */
+
+
+.cta-section{
+
+
+    text-align:center;
+
+
+    padding:70px 30px;
+
+
+    background:#4b3621;
+
+
+    color:white;
+
+
+}
+
+
+
+
+
+
+
+.cta-section h2{
+
+
+    font-size:35px;
+
+
+    margin-bottom:15px;
+
+
+}
+
+
+
+
+
+
+
+.cta-section p{
+
+
+    font-size:18px;
+
+
+    margin-bottom:30px;
+
+
+}
+
+
+
+
+
+
+
+.cta-btn{
+
+
+    display:inline-block;
+
+
+    background:#c49b63;
+
+
+    color:white;
+
+
+    padding:15px 35px;
+
+
+    border-radius:30px;
+
+
+    text-decoration:none;
+
+
+    transition:0.3s;
+
+
+}
+
+
+
+
+
+
+
+.cta-btn:hover{
+
+
+    background:#a67c45;
+
+
+}
+
+
+
+
+
+
+
+
+
+/* ANIMATION */
+
+
+@keyframes fadeIn{
+
+
+    from{
+
+
+        opacity:0;
+
+
+        transform:translateY(30px);
+
+
+    }
+
+
+
+    to{
+
+
+        opacity:1;
+
+
+        transform:translateY(0);
+
+
+    }
+
+
+}
+
+
+
+
+
+
+
+
+
+/* MOBILE */
+
+
+@media(max-width:768px){
+
+
+
+    .hero-content h1{
+
+
+        font-size:35px;
+
+
+    }
+
+
+
+
+
+
+    .hero-content p{
+
+
+        font-size:16px;
+
+
+    }
+
+
+
+
+
+
+    .featured-section h2,
+
+    .features-section h2,
+
+    .cta-section h2{
+
+
+        font-size:28px;
+
+
+    }
+
+
+
+}
